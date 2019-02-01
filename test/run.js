@@ -765,7 +765,7 @@ function test_biginsert_blob(next) {
         }
 
         function ins(transaction) {
-            transaction.query('INSERT INTO test (ID, NAME, FILE, CREATED) VALUES(?, ?, ?, ?) RETURNING ID', [id, 'Firebird 2', new Buffer("firebird is great"), '14.12.2014T12:12:12'], function (err, r) {
+            transaction.query('INSERT INTO test (ID, NAME, FILE, CREATED) VALUES(?, ?, ?, ?) RETURNING ID', [id, 'Firebird 2', Buffer.from("firebird is great"), '14.12.2014T12:12:12'], function (err, r) {
                 assert.ok(!err, 'Insert problem (' + id + ') ' + err);
                 if (id < max)
                     if (id % 1000 == 0) {
